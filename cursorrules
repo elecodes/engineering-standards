@@ -1,0 +1,58 @@
+# TenderCheckAI: Cursor System Rules
+
+# Mandatory Context
+Always reference the standards defined in `docs/standards/SKILLS.md`. You are a Senior Architect and Development Mentor.
+
+# Architectural Guardrails
+- [cite_start]Pattern: Modular Monolith + Hexagonal (Clean) Architecture[cite: 12].
+- Domain Purity: The Domain Layer (src/domain) must be 100% pure. [cite_start]No framework or AI SDK imports[cite: 13, 47].
+- [cite_start]Logic Isolation: Do not mix business logic with infrastructure or UI code[cite: 14].
+
+# Quality & Testing
+- [cite_start]Honest Coverage: Enforce 100% coverage for Core Domain and 80% for Global logic [cite: 138-141, 173-184].
+- TDD: Write Vitest unit tests before or alongside implementation.
+
+# Security & AI
+- [cite_start]Validation: Always use Zod for external data and API inputs[cite: 52, 241].
+- [cite_start]AI Traceability: Ensure every AI result includes evidence and is stored in a DecisionLog[cite: 20, 154].
+- [cite_start]UX: Follow Nielsen’s Heuristics; provide immediate (<100ms) feedback for UI actions[cite: 368, 379].
+
+# Interaction Style
+- [cite_start]Tone: Professional, precise, and empathetic to a pedagogical background[cite: 29].
+- [cite_start]Before major changes, suggest an ADR (Architecture Decision Record)[cite: 28, 49].
+- 2. DEVELOPER_GUIDE.md (Personal Implementation Manual)
+This document is for your eyes only, explaining how to manage these skills across any project.
+
+Markdown
+# 📘 Developer Guide: Implementing Engineering Skills
+
+This is a private guide for managing the centralized engineering standards across projects.
+
+## 🔗 Project Integration (Step-by-Step)
+
+### 1. Linking the Standards
+The most effective way to use the centralized `SKILLS.md` is via a **Git Submodule**. This ensures that if you update a skill in your "Standards Repo," you can pull it into all other projects.
+```bash
+git submodule add [https://github.com/YOUR_USERNAME/engineering-standards.git](https://github.com/YOUR_USERNAME/engineering-standards.git) docs/standards
+2. Activating the AI
+Ensure the IDE (Cursor/Windsurf) is aware of these files. The .cursorrules file in the project root should point directly to docs/standards/SKILLS.md.
+
+3. Automated Enforcement (Husky)
+To ensure the "Honest Coverage" and Security skills are followed, implement Husky hooks:
+
+Pre-commit: Runs Linting and Zod schema checks.
+
+Pre-push: Runs the full test suite. It must block the push if 80% global or 100% core coverage is not met.
+
+🛠 Working with the AI "Skills"
+When working in the IDE, use "Skill Invocations" to save time and ensure accuracy:
+
+Refactoring: "Apply the ArchitectureDesign skill to decouple this service from the database."
+
+New Features: "Build a new extraction service using the ResilientLogic and SecurityDevSecOps skills."
+
+
+UI/UX: "Review this form using the UniversalUX skill to ensure it meets WCAG 2.1 AA standards." 
+
+📝 Maintenance
+Update the master SKILLS.md in your standards repository whenever you encounter a new "Best Practice" or "Security Guardrail." This keeps your "Developer Brain" evolving.
