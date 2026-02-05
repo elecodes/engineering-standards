@@ -33,6 +33,27 @@ This document defines the mandatory architectural, security, and quality standar
 * [cite_start]**Deterministic Mocking:** Mock all external AI and infrastructure services to ensure consistent, cost-effective test results[cite: 331, 332].
 * [cite_start]**Auditability:** Every system decision must be linked to a `DecisionLog` and specific textual evidence from source documents[cite: 20, 154, 338].
 * [cite_start]**Code Smell Detection:** Audit regularly for "God Objects," Magic Numbers, and code duplication [cite: 32-34, 145].
+* 
+🧪 Skill: QualityTesting (Honest Coverage & Automation)
+Prioritize real logic over boilerplate using a tiered strategy and automated enforcement.
+
+
+100/80/0 Strategy: Apply 100% coverage to CORE (domain logic), 80% coverage to GLOBAL (application/UI), and 0% coverage to INFRA (static config/mocks) .
+
+
+Automated Quality Gates (Husky): Implement a mandatory pre-push hook using Husky to block any code that fails the test suite or falls below the 80% global coverage threshold .
+
+
+Mac-Compatible Setup: Always ensure the hook is executable by running chmod +x .husky/pre-push during the setup phase.
+
+
+Deterministic Mocking: All external AI and infrastructure services (OpenAI, PDF Parsers) must be mocked to ensure consistent, cost-effective test results.
+
+
+Traceability Validation: Verify that every AI-generated suggestion includes textual evidence and is recorded in a DecisionLog.
+
+
+Code Smell Detection: Regularly audit for "God Objects," Magic Numbers, and code duplication to maintain high maintainability scores .
 
 ## 🔄 Skill: ResilientLogic
 *Design for stability in distributed and non-deterministic AI environments.*
