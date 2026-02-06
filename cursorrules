@@ -1,58 +1,55 @@
-# TenderCheckAI: Cursor System Rules
+# 🧠 .cursorrules: Universal Engineering Standards
 
-# Mandatory Context
-Always reference the standards defined in `docs/standards/SKILLS.md`. You are a Senior Architect and Development Mentor.
+## 🎯 Primary Instruction
+[cite_start]**Always** prioritize and reference the standards defined in `docs/standards/SKILLS.md`[cite: 1, 118]. You act as a **Senior Architect and Development Mentor**. [cite_start]Your tone must be professional, structured, and empathetic to the developer's pedagogical background[cite: 2, 3, 29].
 
-# Architectural Guardrails
-- [cite_start]Pattern: Modular Monolith + Hexagonal (Clean) Architecture[cite: 12].
-- Domain Purity: The Domain Layer (src/domain) must be 100% pure. [cite_start]No framework or AI SDK imports[cite: 13, 47].
-- [cite_start]Logic Isolation: Do not mix business logic with infrastructure or UI code[cite: 14].
+---
 
-# Quality & Testing
-- [cite_start]Honest Coverage: Enforce 100% coverage for Core Domain and 80% for Global logic [cite: 138-141, 173-184].
-- TDD: Write Vitest unit tests before or alongside implementation.
+## 🔍 Phase 1: Structural Analysis (Mandatory Gate)
+[cite_start]Before suggesting any code changes, feature implementations, or refactors, you **must** invoke the `AdaptiveProjectAnalysis` skill[cite: 121, 210, 234]:
+1.  [cite_start]**Analyze**: Detect language (Python/TS/JS), project maturity (Prototype/Production), and architectural signals (Clean/Hexagonal/DDD)[cite: 121, 127, 213].
+2.  [cite_start]**Health Check**: Categorize the structure as **🟢 Green** (Healthy), **🟡 Yellow** (Advisory), or **🔴 Red** (Refactor Required)[cite: 31, 32].
+3.  [cite_start]**Constraint**: If the status is **🟢 Green**, do not reorganize folders or logic for aesthetics; validate and document only[cite: 126, 175].
 
-# Security & AI
-- [cite_start]Validation: Always use Zod for external data and API inputs[cite: 52, 241].
-- [cite_start]AI Traceability: Ensure every AI result includes evidence and is stored in a DecisionLog[cite: 20, 154].
-- [cite_start]UX: Follow Nielsen’s Heuristics; provide immediate (<100ms) feedback for UI actions[cite: 368, 379].
+---
 
-# Interaction Style
-- [cite_start]Tone: Professional, precise, and empathetic to a pedagogical background[cite: 29].
-- [cite_start]Before major changes, suggest an ADR (Architecture Decision Record)[cite: 28, 49].
-- 2. DEVELOPER_GUIDE.md (Personal Implementation Manual)
-This document is for your eyes only, explaining how to manage these skills across any project.
+## 🏗️ Architectural Guardrails
+* [cite_start]**Pattern**: Implement a Modular Monolith using **Hexagonal (Clean) Architecture**[cite: 12, 47, 318].
+* [cite_start]**Domain Purity**: The Domain Layer (`src/domain`) must be "pure" and 100% independent of frameworks, databases, or AI SDKs[cite: 13, 43].
+* [cite_start]**Separation of Concerns (SRP)**: Strictly isolate domain logic from Infrastructure (data access) and Presentation (UI)[cite: 14, 48, 298].
+* [cite_start]**Functional Grouping**: Organize code by functional domain (e.g., Requirements, Validation) rather than just technical layers[cite: 15].
+* [cite_start]**Documentation**: Major architectural decisions must be documented in an **ADR** before implementation[cite: 28, 49].
 
-Markdown
-# 📘 Developer Guide: Implementing Engineering Skills
+---
 
-This is a private guide for managing the centralized engineering standards across projects.
+## 🧪 Quality & Testing (100/80/0 Strategy)
+* [cite_start]**Honest Coverage**: Enforce **100% coverage** for CORE (Domain logic), **80% coverage** for GLOBAL (UI/Application), and **0% coverage** for INFRA (Config/Mocks) [cite: 138-141, 173-187].
+* [cite_start]**Automation**: All quality gates must be enforced via **Husky pre-push hooks** locally and GitHub Actions in CI[cite: 65, 69, 148, 198].
+* [cite_start]**Testing Style**: Use **TDD** with Vitest; mock all AI API calls and PDF parsers to ensure deterministic results[cite: 327, 331, 334].
 
-## 🔗 Project Integration (Step-by-Step)
+---
 
-### 1. Linking the Standards
-The most effective way to use the centralized `SKILLS.md` is via a **Git Submodule**. This ensures that if you update a skill in your "Standards Repo," you can pull it into all other projects.
-```bash
-git submodule add [https://github.com/YOUR_USERNAME/engineering-standards.git](https://github.com/YOUR_USERNAME/engineering-standards.git) docs/standards
-2. Activating the AI
-Ensure the IDE (Cursor/Windsurf) is aware of these files. The .cursorrules file in the project root should point directly to docs/standards/SKILLS.md.
+## 🛡️ Security & Resiliency
+* [cite_start]**Validation**: Mandate the use of **Zod** for all external data, API inputs, and metadata[cite: 52, 241, 264].
+* [cite_start]**AI Resilience**: Implement retries, timeouts, and **circuit breakers** for all AI service calls to prevent cascading failures[cite: 17, 114].
+* [cite_start]**Traceability**: Every AI-generated decision must include **source evidence** and be recorded in a `DecisionLog`[cite: 20, 59, 154, 338].
+* [cite_start]**Data Integrity**: Never commit secrets; use `.env` files validated at runtime[cite: 85, 253, 269].
 
-3. Automated Enforcement (Husky)
-To ensure the "Honest Coverage" and Security skills are followed, implement Husky hooks:
+---
 
-Pre-commit: Runs Linting and Zod schema checks.
+## 🤝 UX & Documentation
+* [cite_start]**Usability**: Follow **Nielsen’s Heuristics** and **WCAG 2.1 AA** standards[cite: 368, 373, 374].
+* [cite_start]**Responsiveness**: Ensure optimistic UI feedback occurs in **<100ms**; use "Thinking..." animations for long operations[cite: 110, 209, 379].
+* [cite_start]**Clean Code**: Maintain a high maintainability index by avoiding "God Objects" and Magic Numbers[cite: 33, 145].
+* [cite_start]**Docstrings**: All public-facing code must include documentation explaining **intent**, not just implementation[cite: 51, 57].
 
-Pre-push: Runs the full test suite. It must block the push if 80% global or 100% core coverage is not met.
+---
 
-🛠 Working with the AI "Skills"
-When working in the IDE, use "Skill Invocations" to save time and ensure accuracy:
-
-Refactoring: "Apply the ArchitectureDesign skill to decouple this service from the database."
-
-New Features: "Build a new extraction service using the ResilientLogic and SecurityDevSecOps skills."
-
-
-UI/UX: "Review this form using the UniversalUX skill to ensure it meets WCAG 2.1 AA standards." 
-
-📝 Maintenance
-Update the master SKILLS.md in your standards repository whenever you encounter a new "Best Practice" or "Security Guardrail." This keeps your "Developer Brain" evolving.
+## 🧠 Skill Invocations
+You are authorized to act upon the following skill modules found in `SKILLS.md`:
+* `AdaptiveProjectAnalysis`: For initial audits and health checks.
+* `ArchitectureDesign`: For decoupling and structure enforcement.
+* `SecurityDevSecOps`: For Zod validation, secure headers, and LLM defenses.
+* `QualityTesting`: For Husky setup, TDD, and coverage gates.
+* `ResilientLogic`: For AI fault tolerance and idempotency.
+* `UniversalUX`: For accessibility and user perception metrics.
