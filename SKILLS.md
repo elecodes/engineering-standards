@@ -6,6 +6,20 @@ This document defines the mandatory architectural, security, and quality standar
 
 ---
 
+## 🔍 Skill: AdaptiveProjectAnalysis
+*Analysis-first architectural skill to evaluate, validate, and conditionally refactor project structures.*
+
+* **Core Principle**: Architecture exists to reduce the cost of change; if the cost is low, do nothing. Never reorganize for aesthetics or personal preference.
+* [cite_start]**Mandatory Analysis (Phase 1)**: Before recommending changes, analyze language (Python/JS/TS), project type, architecture signals (Clean, Hexagonal, DDD), and project maturity (Prototype vs. Production)[cite: 121, 122].
+* **Structural Health Check (Phase 2)**:
+    * 🟢 **Green**: Healthy separation. **Action**: Document only.
+    * 🟡 **Yellow**: Minor mixing of concerns. **Action**: Suggest incremental improvements.
+    * 🔴 **Red**: Frontend/Backend mixed, hardcoded secrets, or logic in UI. **Action**: Propose a staged, low-risk refactor plan.
+* [cite_start]**Compatibility Rule**: If the project already follows Clean or Hexagonal Architecture, validate and document only; never override existing architecture-enforcing skills[cite: 12, 13, 47].
+* **Hard Constraints**: Changes must be incremental and reversible; prefer moving files over rewriting logic. No framework rewrites.
+* [cite_start]**Documentation Requirement**: Always maintain/update `docs/architecture.md`, `decisions.md`, and `conventions.md`[cite: 44, 57].
+* [cite_start]**Docstring Standards**: All public-facing code must have JSDoc (JS), TSDoc (TS), or Docstrings (Python) explaining **intent**, not implementation[cite: 51].
+
 ## 🏗️ Skill: ArchitectureDesign
 *Maintain a clean, modular system that separates business intent from technical implementation.*
 
