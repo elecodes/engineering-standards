@@ -71,4 +71,18 @@ This document defines the mandatory architectural, security, and quality standar
 * [cite_start]**Optimistic UI**: Ensure feedback for user interactions occurs in **<100ms**, with automatic rollbacks on failure[cite: 112, 288, 379].
 * [cite_start]**Human-in-the-loop**: The system acts as a "Copilot"; the human user always makes the final call[cite: 23, 60, 251].
 
+## 🧩 Skill: DDDImplementation (Domain-Driven Design)
+*Expert-level guidance shifting focus from data structures to business models and behaviors.*
+
+* **Design by Domain vs. Data**: Avoid "Anemic Domain Models." Do not start with DB tables or IDs. Focus on logic first, persistence last.
+* **Ubiquitous Language**: Code must reflect business terminology. Use methods like `.enroll()` or `.approve()` instead of generic `.updateStatus()` or `.insertRow()`.
+* **Tactical Building Blocks**:
+    * **Value Objects**: Eliminate "Primitive Obsession" (e.g., use an `Email` class instead of a `string`). Ensure they are immutable and self-validating.
+    * **Aggregates**: Group related entities. Use an **Aggregate Root** to protect business invariants (e.g., ensuring a "Course" never exceeds capacity).
+* **Strategic Separation**:
+    * **Application Services**: Act as orchestrators only. Fetch data, trigger domain logic, and save. No business logic or HTTP/framework code allowed here.
+    * **Ports & Adapters**: Define interfaces in the Domain; implement persistence/APIs in the Infrastructure layer.
+* **Decoupled Persistence**: Use explicit **Mappers** to separate domain entities from database schemas. Use `toDomain()` for reconstruction.
+* **Refactoring Path**: Avoid "Big Bang" rewrites. Start by identifying primitive data and refactoring it into Value Objects.
+
 ---

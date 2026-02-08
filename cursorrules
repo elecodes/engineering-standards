@@ -53,3 +53,4 @@ You are authorized to act upon the following skill modules found in `SKILLS.md`:
 * `QualityTesting`: For Husky setup, TDD, and coverage gates.
 * `ResilientLogic`: For AI fault tolerance and idempotency.
 * `UniversalUX`: For accessibility and user perception metrics.
+* `DDDImplementation`: For business logic modeling, Value Objects, and Aggregate protection.
