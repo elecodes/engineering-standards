@@ -48,3 +48,30 @@ MY_HANDBOOK.md: Your personal, step-by-step implementation manual for starting p
 ADR/: Templates for Architecture Decision Records to document technical pivots and "Why" behind the code.
 
 .cursorrules: The master configuration template for IDE integration.
+
+---
+
+## 🔧 Installing Skills in Other Projects
+
+To use these skills in any AI IDE, copy the skill folder to your AI tool's skills directory:
+
+### Claude Code / Claude Desktop
+```bash
+cp -r skills/llm-security/ ~/.claude/skills/llm-security/
+```
+
+### OpenCode
+```bash
+cp -r skills/llm-security/ ~/.config/opencode/skills/llm-security/
+```
+
+### Reference by Absolute Path
+Some tools support loading from arbitrary paths:
+```
+file:///path/to/engineering-standards/skills/llm-security/SKILL.md
+```
+
+### Symlink (stays in sync)
+```bash
+ln -s /path/to/engineering-standards/skills/llm-security ~/.claude/skills/llm-security
+```
