@@ -85,4 +85,21 @@ This document defines the mandatory architectural, security, and quality standar
 * **Decoupled Persistence**: Use explicit **Mappers** to separate domain entities from database schemas. Use `toDomain()` for reconstruction.
 * **Refactoring Path**: Avoid "Big Bang" rewrites. Start by identifying primitive data and refactoring it into Value Objects.
 
+## 🔐 Skill: LLMSecurityAI
+*Secure AI agents and LLM applications against prompt injection, jailbreaks, and tool misuse.*
+
+* **Assume Compromise**: Treat the model as a potential vulnerability. Do not rely on "security by incompetence."
+* **Defense in Depth**: Layer security at input (gateways), tools (contracts), data (access control), and output (filters).
+* **Least Privilege**: Grant agents only the capabilities they require. Scope tool permissions tightly.
+* **Tool Contract Enforcement**: Use strongly-typed schemas (not generic strings). Add regex patterns for identifiers (e.g., `^USR_[0-9]{6}$`), usage examples, rate limits, and execution timeouts.
+* **Input Gateway**: Detect and block prompt injection patterns ("ignore previous", "system prompt", "override"). Classify user intent (harmful vs. legitimate). Validate external data sources.
+* **Output Gateway**: Redact PII (emails, phones, SSNs, API keys). Detect jailbreaks (filter if model violated guidelines). Sanitize code (block dangerous imports/functions). Validate URLs.
+* **RAG Safety** (if applicable): Validate document sources (trust only curated/internal). Sanitize content before indexing. Re-rank results by relevance + trustworthiness. Chunk thoughtfully (500–1000 tokens).
+* **Resilience**: Implement timeouts (30s request, 5s tool), exponential backoff retries (1s → 2s → 4s), circuit breakers (stop after N failures), and per-user rate limits.
+* **Observability**: Log all agent interactions (query, reasoning, tool calls, output, metrics). Track: success rate (>95%), latency p95 (<2s), cost per task, tool error rate (<2%), jailbreak detection (>95%).
+* **Supply Chain** (open-source models): Download from official sources only. Verify SHA256 checksum. Scan with VirusTotal if available.
+* **OWASP Top 10 for LLMs**: Mitigate prompt injection, indirect injection (RAG), system prompt leakage, sensitive info disclosure, model poisoning, insecure tool design, and denial-of-wallet attacks.
+* **Sensitive Action HITL**: Require human approval for payments, PII access, data deletes, and critical system changes. Maintain audit trails.
+* **Jailbreak Patterns**: Block common patterns: "ignore previous", "role-play as", "pretend you are", "developer mode", "output without filter".
+
 ---

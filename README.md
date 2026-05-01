@@ -38,7 +38,10 @@ CORE Domain: All business logic within src/domain must maintain 100% statement/b
 Mac Compatibility: Hooks must be made executable using chmod +x.
 
 📂 Repository Structure
-SKILLS.md: The primary "Skill Bundle." It contains the logic modules for Adaptive Analysis, DDD, Architecture, Security, Quality, and UX.
+SKILLS.md: The primary "Skill Bundle." It contains the logic modules for Adaptive Analysis, DDD, Architecture, Security, Quality, UX, and LLM Security.
+
+skills/: Detailed documentation for each skill.
+  - llm-security.md: Full LLM Security & AI Agent Hardening guide. Referenced from SKILLS.md.
 
 MY_HANDBOOK.md: Your personal, step-by-step implementation manual for starting projects and invoking AI skills.
 
